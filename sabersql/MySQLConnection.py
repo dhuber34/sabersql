@@ -35,10 +35,10 @@ class MySQLConnection:
         """
 
         if use_database:
-            stdout, stderr = _shell("export MYSQL_PWD=%s; mysql -u%s %s -B -e \"%s\"" %
+            stdout, stderr = _shell("set MYSQL_PWD=%s; mysql -u%s %s -B -e \"%s\"" %
                                     (self._password, self._username, self._database, command))
         else:
-            stdout, stderr = _shell("export MYSQL_PWD=%s; mysql -u%s -B -e \"%s\"" %
+            stdout, stderr = _shell("set MYSQL_PWD=%s; mysql -u%s -B -e \"%s\"" %
                                     (self._password, self._username, command))
 
         if stderr:
